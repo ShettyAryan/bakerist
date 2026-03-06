@@ -6,6 +6,11 @@ export function useReveal() {
   useEffect(() => {
     const elements = document.querySelectorAll<HTMLElement>(".reveal");
 
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      elements.forEach((el) => el.classList.add("visible"));
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -15,7 +20,7 @@ export function useReveal() {
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
     );
 
     elements.forEach((el) => observer.observe(el));

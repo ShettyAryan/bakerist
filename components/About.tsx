@@ -15,9 +15,9 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-32 px-6 md:px-12 bg-surface-light dark:bg-surface-dark overflow-hidden transition-colors duration-500"
+      className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12 bg-surface-light dark:bg-surface-dark overflow-hidden transition-colors duration-500"
     >
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 sm:gap-16 md:gap-20 items-center">
         {/* Image column */}
         <div className="order-2 md:order-1 relative reveal">
           {/* Decorative offset border */}
@@ -30,8 +30,9 @@ export default function About() {
               alt="Baker working dough"
               width={700}
               height={900}
-              className="w-full h-[680px] object-cover grayscale hover:grayscale-0 group-hover:scale-[1.04]
-                         transition-all duration-[1200ms] ease-expo"
+              className="w-full h-[320px] sm:h-[420px] md:h-[520px] lg:h-[680px] object-cover grayscale hover:grayscale-0 group-hover:scale-[1.04]
+                         transition-all duration-700 md:duration-[1200ms] ease-expo"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
             {/* Corner label */}
             <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/60 to-transparent" />
@@ -72,16 +73,16 @@ export default function About() {
             {stats.map(({ num, label }, i) => (
               <div
                 key={label}
-                className={`py-6 text-center ${
+                className={`py-4 sm:py-6 text-center ${
                   i < stats.length - 1
                     ? "border-r border-stone-200 dark:border-stone-700/50"
                     : ""
                 }`}
               >
-                <p className="font-display text-primary text-3xl font-bold mb-1">
+                <p className="font-display text-primary text-2xl sm:text-3xl font-bold mb-1">
                   {num}
                 </p>
-                <p className="text-[9px] uppercase tracking-[0.25em] text-stone-400 font-brand font-semibold">
+                <p className="text-[8px] sm:text-[9px] uppercase tracking-[0.25em] text-stone-400 font-brand font-semibold">
                   {label}
                 </p>
               </div>

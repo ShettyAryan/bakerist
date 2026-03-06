@@ -27,22 +27,22 @@ export default function Instagram() {
   useReveal();
 
   return (
-    <section className="py-28 bg-surface-light dark:bg-surface-dark transition-colors duration-500">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-16 sm:py-20 md:py-28 bg-surface-light dark:bg-surface-dark transition-colors duration-500">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="flex justify-between items-end mb-14 reveal">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-10 sm:mb-14 reveal">
           <div>
             <p className="text-[10px] font-bold text-primary tracking-[0.35em] uppercase mb-3 font-brand">
               Follow Us
             </p>
-            <h2 className="font-display text-stone-900 dark:text-stone-50 text-[clamp(1.8rem,4vw,3rem)]">
+            <h2 className="font-display text-stone-900 dark:text-stone-50 text-[clamp(1.5rem,3.5vw,3rem)] sm:text-[clamp(1.8rem,4vw,3rem)]">
               @bakerist_uae
             </h2>
           </div>
           <a
             href="#"
             className="hidden md:flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em]
-                       hover:text-primary transition-colors text-stone-600 dark:text-stone-300 group font-brand"
+                       hover:text-primary transition-colors text-stone-600 dark:text-stone-300 group font-brand min-h-[44px]"
           >
             View Instagram
             <span className="material-symbols-outlined text-base group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
@@ -52,11 +52,11 @@ export default function Instagram() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
           {posts.map(({ src, alt }, i) => (
             <div
               key={i}
-              className="aspect-[4/5] overflow-hidden rounded-2xl cursor-pointer shadow-md group reveal"
+              className="aspect-[4/5] overflow-hidden rounded-xl sm:rounded-2xl cursor-pointer shadow-md group reveal"
               style={{ transitionDelay: `${i * 90}ms` }}
             >
               <Image
@@ -64,24 +64,23 @@ export default function Instagram() {
                 alt={alt}
                 width={400}
                 height={500}
-                className="w-full h-full object-cover group-hover:scale-110
-                           transition-transform duration-[1000ms] ease-expo"
+                className="w-full h-full object-cover group-hover:scale-105 md:group-hover:scale-110
+                           transition-transform duration-500 md:duration-[1000ms] ease-expo"
+                sizes="(max-width: 768px) 50vw, 25vw"
               />
             </div>
           ))}
         </div>
 
         {/* Mobile link */}
-        <div className="mt-10 flex justify-center md:hidden reveal">
+        <div className="mt-8 sm:mt-10 flex justify-center md:hidden reveal">
           <a
             href="#"
             className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em]
-                       hover:text-primary transition-colors text-stone-600 dark:text-stone-300 font-brand"
+                       hover:text-primary transition-colors text-stone-600 dark:text-stone-300 font-brand min-h-[44px]"
           >
             View Instagram
-            <span className="material-symbols-outlined text-base">
-              arrow_outward
-            </span>
+            <ArrowRightIcon className="w-4 h-4" />
           </a>
         </div>
       </div>

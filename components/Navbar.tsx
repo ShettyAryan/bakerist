@@ -21,16 +21,16 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-6 left-0 right-0 z-50 mx-auto px-7 rounded-full glass-nav flex justify-between items-center transition-all duration-500 shadow-2xl ${
+      className={`fixed top-4 left-0 right-0 z-50 mx-auto px-4 sm:px-6 md:px-7 rounded-full glass-nav flex justify-between items-center transition-all duration-500 shadow-2xl ${
         scrolled
-          ? "max-w-4xl py-3 top-4"
-          : "max-w-5xl py-4"
+          ? "max-w-4xl py-2.5 sm:py-3 top-3 sm:top-4"
+          : "max-w-5xl py-3 sm:py-4"
       }`}
     >
       {/* Logo */}
       <Link
-        href="#"
-        className="text-[1.65rem] font-bold font-brand text-primary dark:text-white tracking-[-0.04em] hover:opacity-75 transition-opacity"
+        href="/"
+        className="text-[1.35rem] sm:text-[1.65rem] font-bold font-brand text-primary dark:text-white tracking-[-0.04em] hover:opacity-75 transition-opacity min-h-[44px] flex items-center"
       >
         bakerist
       </Link>
@@ -56,11 +56,12 @@ export default function Navbar() {
         Book a Table
       </Link>
 
-      {/* Mobile hamburger */}
+      {/* Mobile hamburger - 44px min touch target */}
       <button
-        className="md:hidden flex flex-col gap-1.5 p-2"
+        className="md:hidden flex flex-col gap-1.5 p-3 min-w-[44px] min-h-[44px] items-center justify-center -mr-1"
         onClick={() => setMenuOpen(!menuOpen)}
         aria-label="Toggle menu"
+        aria-expanded={menuOpen}
       >
         <span
           className={`block w-6 h-0.5 bg-stone-800 dark:bg-white transition-all duration-300 origin-center ${
@@ -81,13 +82,13 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="absolute top-full mt-3 left-0 right-0 glass-nav rounded-2xl p-6 flex flex-col gap-5 md:hidden shadow-2xl">
+        <div className="absolute top-full mt-3 left-2 right-2 sm:left-4 sm:right-4 glass-nav rounded-2xl p-6 flex flex-col gap-5 md:hidden shadow-2xl max-h-[calc(100dvh-100px)] overflow-y-auto">
           {links.map(({ label, href }) => (
             <Link
               key={label}
               href={href}
               onClick={() => setMenuOpen(false)}
-              className="text-[11px] font-bold uppercase tracking-[0.25em] text-stone-800 dark:text-stone-200 hover:text-primary transition-colors"
+              className="text-[11px] font-bold uppercase tracking-[0.25em] text-stone-800 dark:text-stone-200 hover:text-primary transition-colors py-2 min-h-[44px] flex items-center"
             >
               {label}
             </Link>
@@ -95,7 +96,7 @@ export default function Navbar() {
           <Link
             href="#locations"
             onClick={() => setMenuOpen(false)}
-            className="btn-shimmer text-white px-6 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest text-center"
+            className="btn-shimmer text-white px-6 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest text-center min-h-[48px] flex items-center justify-center"
           >
             Book a Table
           </Link>
