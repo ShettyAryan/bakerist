@@ -1,12 +1,13 @@
 "use client";
 
 import { useReveal } from "@/lib/useReveal";
+import { Store, Waves, TreePalm, Building2 } from "lucide-react";
 
 const locations = [
-  { name: "Dubai Hills", sub: "Business Park 1", icon: "storefront" },
-  { name: "Bluewaters", sub: "The Wharf", icon: "water" },
-  { name: "The Palm", sub: "Nakheel Mall", icon: "park" },
-  { name: "Business Bay", sub: "Opus Tower", icon: "apartment" },
+  { name: "Dubai Hills", sub: "Business Park 1", Icon: Store },
+  { name: "Bluewaters", sub: "The Wharf", Icon: Waves },
+  { name: "The Palm", sub: "Nakheel Mall", Icon: TreePalm },
+  { name: "Business Bay", sub: "Opus Tower", Icon: Building2 },
 ];
 
 export default function Locations() {
@@ -38,7 +39,7 @@ export default function Locations() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/10">
-          {locations.map(({ name, sub, icon }, i) => (
+          {locations.map(({ name, sub, Icon }, i) => (
             <div
               key={name}
               className="group px-10 py-14 text-center hover:bg-white/[0.06] transition-all duration-500 reveal"
@@ -46,11 +47,11 @@ export default function Locations() {
             >
               {/* Icon */}
               <span
-                className="material-symbols-outlined block mb-7 text-4xl text-white/50
+                className="flex justify-center mb-7 text-4xl text-white/50
                            group-hover:text-white group-hover:scale-110
                            transition-all duration-500"
               >
-                {icon}
+                <Icon className="w-10 h-10" strokeWidth={1.25} />
               </span>
 
               {/* Name */}
