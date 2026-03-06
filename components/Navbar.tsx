@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 const links = [
-  { label: "Our Story", href: "#about" },
-  { label: "Menu", href: "#menu" },
-  { label: "Locations", href: "#locations" },
+  { label: "Our Story", href: "/#about" },
+  { label: "Menu", href: "/#menu" },
+  { label: "Locations", href: "/#locations" },
 ];
 
 export default function Navbar() {
@@ -82,7 +82,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="absolute top-full mt-3 left-2 right-2 sm:left-4 sm:right-4 glass-nav rounded-2xl p-6 flex flex-col gap-5 md:hidden shadow-2xl max-h-[calc(100dvh-100px)] overflow-y-auto">
+        <div className="absolute top-full mt-3 left-2 right-2 sm:left-4 sm:right-4 rounded-2xl p-6 flex flex-col gap-5 md:hidden shadow-2xl max-h-[calc(100dvh-100px)] overflow-y-auto bg-white/90">
           {links.map(({ label, href }) => (
             <Link
               key={label}
