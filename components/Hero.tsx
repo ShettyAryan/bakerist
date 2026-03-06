@@ -1,0 +1,124 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+
+export default function Hero() {
+  const imgRef = useRef<HTMLDivElement>(null);
+
+  // Subtle parallax on scroll
+  useEffect(() => {
+    const onScroll = () => {
+      if (!imgRef.current) return;
+      const y = window.scrollY * 0.3;
+      imgRef.current.style.transform = `translateY(${y}px)`;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      {/* Parallax image */}
+      <div
+        ref={imgRef}
+        className="absolute inset-0 z-0 will-change-transform scale-110"
+      >
+        <Image
+          src="https://www.dubaireview.ae/wp-content/uploads/listing-uploads/gallery/2023/10/sd.jpeg"
+          alt="Bakerist Dubai interior"
+          fill
+          priority
+          className="object-cover brightness-[0.68] dark:brightness-[0.42]"
+          sizes="100vw"
+        />
+      </div>
+
+      {/* Gradient vignette */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-black/30 via-transparent to-black/60" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-black/20 via-transparent to-transparent" />
+
+      {/* Content */}
+      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-10">
+        {/* Badge */}
+        <div
+          className="inline-flex items-center gap-2 mb-8 px-5 py-1.5 border border-white/25 rounded-full
+                     backdrop-blur-md bg-white/5 animate-fade-in"
+          style={{ animationDelay: "0.2s", opacity: 0 }}
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+          <span className="text-[9px] font-bold text-white tracking-[0.35em] uppercase">
+            Est. Dubai 2024
+          </span>
+        </div>
+
+        {/* Headline */}
+        <h1
+          className="font-display font-bold text-white leading-none drop-shadow-2xl
+                     text-[clamp(4rem,12vw,9rem)] animate-fade-in-up"
+          style={{ animationDelay: "0.35s", opacity: 0 }}
+        >
+          In Bread
+          <br />
+          <span className="italic font-normal tracking-tight text-white/90">
+            We Trust
+          </span>
+        </h1>
+
+        {/* Subline */}
+        <p
+          className="mt-8 mb-12 text-white/85 font-sans font-light
+                     text-[clamp(1rem,2.2vw,1.4rem)] max-w-2xl mx-auto leading-relaxed tracking-wide
+                     animate-fade-in"
+          style={{ animationDelay: "0.55s", opacity: 0 }}
+        >
+          Experience the art of slow fermentation and the warmth of Dubai&apos;s
+          finest artisanal bakery.
+        </p>
+
+        {/* CTAs */}
+        <div
+          className="flex flex-col sm:flex-row gap-5 justify-center items-center
+                     animate-fade-in"
+          style={{ animationDelay: "0.7s", opacity: 0 }}
+        >
+          <Link
+            href="#menu"
+            className="group px-10 py-4 bg-white text-primary hover:bg-secondary
+                       font-brand font-bold uppercase tracking-[0.18em] text-[10px] rounded-full
+                       min-w-[190px] text-center shadow-2xl
+                       transform hover:scale-105 hover:-translate-y-0.5 transition-all duration-300"
+          >
+            View Menu
+          </Link>
+          <Link
+            href="#locations"
+            className="px-10 py-4 border-[1.5px] border-white/70 text-white
+                       hover:bg-white/10 backdrop-blur-sm
+                       font-brand font-bold uppercase tracking-[0.18em] text-[10px] rounded-full
+                       min-w-[190px] text-center
+                       transform hover:scale-105 hover:-translate-y-0.5
+                       hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]
+                       transition-all duration-300"
+          >
+            Find Us
+          </Link>
+        </div>
+      </div>
+
+      {/* Scroll cue */}
+      <Link
+        href="#about"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 group"
+      >
+        <span className="text-[8px] text-white/50 uppercase tracking-[0.3em] font-brand group-hover:text-white/80 transition-colors">
+          Scroll
+        </span>
+        <div className="w-5 h-8 border border-white/30 rounded-full flex items-start justify-center pt-1.5">
+          <div className="w-1 h-1 rounded-full bg-white/70 animate-scroll-dot" />
+        </div>
+      </Link>
+    </section>
+  );
+}
