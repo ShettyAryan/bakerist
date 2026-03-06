@@ -64,6 +64,8 @@ export default function Instagram() {
                 alt={alt}
                 width={400}
                 height={500}
+                loading="lazy"
+                quality={75}
                 className="w-full h-full object-cover group-hover:scale-105 md:group-hover:scale-110
                            transition-transform duration-500 md:duration-[1000ms] ease-expo"
                 sizes="(max-width: 768px) 50vw, 25vw"

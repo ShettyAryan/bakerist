@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { BLUR_DATA_URL } from "@/lib/constants";
 
 export default function Hero() {
   const imgRef = useRef<HTMLDivElement>(null);
@@ -30,6 +31,9 @@ export default function Hero() {
           alt="Bakerist Dubai interior"
           fill
           priority
+          placeholder="blur"
+          blurDataURL={BLUR_DATA_URL}
+          quality={82}
           className="object-cover brightness-[0.68] dark:brightness-[0.42]"
           sizes="100vw"
         />

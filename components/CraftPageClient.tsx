@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useReveal } from "@/lib/useReveal";
 import type { CraftItem } from "@/lib/craftData";
 import { ArrowUpRight, Sparkles } from "lucide-react";
+import { BLUR_DATA_URL } from "@/lib/constants";
 
 export default function CraftPageClient({
   craft,
@@ -25,6 +26,9 @@ export default function CraftPageClient({
             alt={craft.title}
             fill
             priority
+            placeholder="blur"
+            blurDataURL={BLUR_DATA_URL}
+            quality={82}
             sizes="100vw"
             className="object-cover"
           />
@@ -137,6 +141,8 @@ export default function CraftPageClient({
                     src={p.img}
                     alt={p.name}
                     fill
+                    loading="lazy"
+                    quality={78}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover transition-transform duration-500 md:duration-700 group-hover:scale-105 ease-expo"
                   />
@@ -157,7 +163,7 @@ export default function CraftPageClient({
                       <p className="font-brand font-bold text-primary text-sm tracking-wide">
                         {p.price}
                       </p>
-                      <div className="hidden sm:block mt-3 inline-flex items-center gap-1.5 text-stone-400 dark:text-stone-500">
+                      <div className="hidden sm:inline-flex mt-3 items-center gap-1.5 text-stone-400 dark:text-stone-500">
                         <ArrowUpRight
                           className="w-4 h-4 group-hover:text-primary transition-colors duration-300"
                           strokeWidth={1.5}
@@ -234,6 +240,8 @@ export default function CraftPageClient({
                   src={c.img}
                   alt={c.title}
                   fill
+                  loading="lazy"
+                  quality={78}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover transition-transform duration-500 md:duration-1000 group-hover:scale-105 md:group-hover:scale-110 ease-expo"
                 />
